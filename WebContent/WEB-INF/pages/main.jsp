@@ -13,14 +13,16 @@
 	<spring:url value="/playlist" var="playlisturl" />
 	
 	<div id="body">
-
+		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
 		<div id="text">
 			
 			<h2>SoundCloud-2 рад приветствовать Вас,
 			<c:out value="${user.name}" />.<br/> Желаем приятного времяпрепродвождения. Инструкцию по пользованию
 			сайтом вы можете почитать ниже.<br/></h2>
+			<button id="submit" onclick="javascript:collapsElement('identifikator')" title="">Инструкция</button>
+			</br>
 			<div>
-				<button id="submit" onclick="javascript:collapsElement('identifikator')" title="">Инструкция</button>
+				
 				<div id="identifikator" style="display: none">
 				<br/><br/>
 					<p>В <a href="${profileurl}">Profile</a> хранится информация о вас.<br/>В библиотеке Вы можете
@@ -30,8 +32,8 @@
 			ради себя и других пользователей. Не забывайте выбирать нужный жанр в
 			выпадающем списке! Это сделано для удобства поиска определенной
 			музыки...<br/>Под каждой песней Вы,
-			<c:out value="${user.name}" />
-			, а также другие пользователи имеете возможность оставлять
+			<c:out value="${user.name}" />,
+			а также другие пользователи имеете возможность оставлять
 			комментарии, делиться впечатлениями, как позитвными, так и
 			негативными. Но будьте благоразумными - &#822;н&#822;е&#822;
 			&#822;у&#822;с&#822;т&#822;р&#822;а&#822;и&#822;в&#822;а&#822;й&#822;т&#822;е&#822;
@@ -51,8 +53,7 @@
 				}
 			}
 		</script>
-		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
-		<c:import url="linkbar.jsp" charEncoding="UTF-8"></c:import>
+		
 	</div>
 </body>
 </html>

@@ -1,9 +1,11 @@
 package by.bigsoft.javaee.controllers;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.h2.engine.SysProperties;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -136,6 +139,12 @@ public class LoginController {
 		actU.setCity(user.getCity());
 		session.saveOrUpdate(actU);
 		transaction.commit();
+		Query qr2 = session
+				.createQuery("from User where login = :login ");
+		qr2.setParameter("login", user.getLogin());
+		actU = (User) qr2.uniqueResult();
+		httpSession.setAttribute("user", actU);
+		model.addAttribute("user", actU);
 		// Query q =
 		// session.createQuery("update User set login = :login, password = :password, name = :name, surname = :surname, email = :email, city = :city, phone = :phone where id = :id");
 		// q.setParameter("login", user.getLogin());
@@ -164,14 +173,14 @@ public class LoginController {
 		return "about_us";
 	}
 
-	@RequestMapping("/upload/up")
-	public String UploadUp(@ModelAttribute Music music, Model model)
+	//@RequestMapping("/upload/up")
+	@RequestMapping(value = "/upload/up", method = RequestMethod.POST)
+	public String UploadUp(@ModelAttribute MultipartFile file, Model model, Music music)
 			throws IOException {
 		Session session = HibernateUtil.currentSession();
 		Transaction transaction = session.beginTransaction();
-		// System.out.println(music.getPath());
-		Path path = Paths.get(music.getPath());
-		byte[] song = Files.readAllBytes(path);
+		byte[] song = file.getBytes();
+		InputStream inputStream = new ByteArrayInputStream(song);
 		music.setSong(song);
 		session.saveOrUpdate(music);
 		transaction.commit();
@@ -240,7 +249,6 @@ public class LoginController {
 		// name_user = :id2)
 		q.setParameter("id2", actU.getId());
 		List<Integer> music = q.list();
-		System.out.println("sosiski");
 		model.addAttribute("music", music);
 		return "playlist";
 	}

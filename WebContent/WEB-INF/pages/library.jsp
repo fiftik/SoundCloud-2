@@ -6,7 +6,7 @@
 <head>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/pages/header.jsp" />
+	
 	
 	<script src="<c:url value="/resources/js/jquery-1.11.3.min.js"/>"></script>
 	
@@ -22,8 +22,7 @@
 	<c:url value="/library/search" var="searchurl"></c:url>
 
 	<div id="body">
-	<jsp:include page="/WEB-INF/pages/linkbar.jsp" />
-	
+		<jsp:include page="/WEB-INF/pages/header.jsp" />
 	
 	
 		<div id="text">
@@ -49,10 +48,16 @@
 				<br/>
 				<a href='<c:url value="/song?id=${music.id}"/>'>${music.author} - ${music.name_song}</a>&nbsp &nbsp Жанр: ${music.genre}
 				<br/>
-				<embed src='<c:url value="/music?id=${music.id}"/>' type="audio/mpeg"
-					width="280" height="40" autostart="false" loop="false"
+				<!-- <embed src='<c:url value="/music?id=${music.id}"/>' type="audio/mpeg"
+					width="280" height="60" autostart="false" loop="false"
 					align="middle" volume="100">
-				</embed>
+				</embed> -->
+
+				<audio controls>
+    				<source src='<c:url value="/music?id=${music.id}"/>' type="audio/mpeg"></source>
+				</audio>
+
+
 				<form action='<c:url value="/addmusic?id=${music.id}"/>' method="post" id="${music.id}" class="addmsc">
 					<input type="submit" value="Добавить в свой Playlist" />
 				</form>

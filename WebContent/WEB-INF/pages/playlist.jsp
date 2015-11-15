@@ -8,20 +8,22 @@
 <body>
 	<c:url value="/song" var="songurl"></c:url>
 	<div id="body">
-
-	<div id="text">
+		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
+		<div id="text">
 	
 			<c:forEach items="${music}" var="music">
-				<embed src='<c:url value="/music?id=${music}"/>' type="video/avi"
+				<!-- <embed src='<c:url value="/music?id=${music}"/>' type="video/avi"
 					width="280" height="40" autostart="false" loop="false"
 					align="middle" volume="100">
-				</embed>
+				</embed> -->
+				<audio controls>
+    				<source src='<c:url value="/music?id=${music}"/>' type="audio/mpeg"></source>
+				</audio>
 				</br>	
-	</c:forEach>	
+			</c:forEach>	
 	
-	</div>
-		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
-		<c:import url="linkbar.jsp" charEncoding="UTF-8"></c:import>
+		</div>
+		
 	</div>
 </body>
 </html>

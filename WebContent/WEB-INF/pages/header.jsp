@@ -7,34 +7,46 @@
 <spring:url value="/library" var="libraryurl" />
 <spring:url value="/about_us" var="about_usurl" />
 <spring:url value="/logout" var="logouturl" />
+<spring:url value="/upload" var="uploadurl" />
+<spring:url value="/playlist" var="playlisturl" />
 
 
-<div id="header">
-	<p align="center">
-		<a href="${mainurl}"><img 
-			src="<c:url value="/resources/images/home.jpg"/>"
-			onclick="this.src='<c:url value="/resources/images/homeonclick.jpg"/>'"
-			onmouseout="this.src='<c:url value="/resources/images/home.jpg"/>'"
-			onmouseover="this.src='<c:url value="/resources/images/homeonmouseover.jpg"/>'"></a>
-		<a href="${profileurl}"><img
-			src="<c:url value="/resources/images/profile.jpg"/>"
-			onclick="this.src='<c:url value="/resources/images/profileonclick.jpg"/>'"
-			onmouseout="this.src='<c:url value="/resources/images/profile.jpg"/>'"
-			onmouseover="this.src='<c:url value="/resources/images/profileonmouseover.jpg"/>'"></a>
-		<a href="${libraryurl}"><img
-			src="<c:url value="/resources/images/library.jpg"/>"
-			onclick="this.src='<c:url value="/resources/images/libraryonclick.jpg"/>'"
-			onmouseout="this.src='<c:url value="/resources/images/library.jpg"/>'"
-			onmouseover="this.src='<c:url value="/resources/images/libraryonmouseover.jpg'"/>"></a>
-		<a href="${about_usurl}"><img
-			src="<c:url value="/resources/images/about_us.jpg"/>"
-			onmouseout="this.src='<c:url value="/resources/images/about_us.jpg"/>'"
-			onclick="this.src='<c:url value="/resources/images/about_usonclick.jpg"/>'"
-			onmouseover="this.src='<c:url value="/resources/images/about_usonmouseover.jpg"/>'"></a>
-		<a href="${logouturl}"><img
-			src="<c:url value="/resources/images/log_out.jpg"/>"
-			onmouseout="this.src='<c:url value="/resources/images/log_out.jpg"/>'"
-			onclick="this.src='<c:url value="/resources/images/log_outonclick.jpg"/>'"
-			onmouseover="this.src='<c:url value="/resources/images/log_outonmouseover.jpg"/>'"></a>
-	</p>
-</div>
+<div id="wrapper">
+	<header id="header">
+		
+
+		<nav id="main-nav">
+		
+			<ul>
+				<li class="first home active"><a href="${mainurl}"><span>Home</span></a></li>
+						
+				<li class="parent dropdown "><a href="#"><span>Profile</span></a>
+					
+					<ul>
+						<li class=""><a href="${playlisturl}">My Playlist</a></li>
+						<li class=""><a href="${profileurl}">Settings</a></li>
+						</ul>
+				</li>
+				
+				<li class="blog "><a href="${libraryurl}"><span>Library</span></a></li>
+
+				<li class="profile "><a href="${uploadurl}"><span>Upload Song</span></a></li>
+					
+				<li class="contact "><a href="${about_usurl}"><span>About us</span></a></li>
+
+				<li class="log_out "><a href="${logouturl}"><span>Log Out</span></a></li>
+
+								
+							</ul>
+			
+			<div class="clear"></div>
+		
+		</nav><!--/main-nav-->
+		
+		<div class="clear"></div>
+
+	</header><!-- /#header -->	
+	
+
+    
+</div><!-- /#wrapper -->

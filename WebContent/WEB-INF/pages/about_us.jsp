@@ -8,16 +8,13 @@
 <body>
 
 	<div id="body">
-
-	<div id="text">
-		</br>
-		<h2>Шарашкина контора "Java Proekt Izdevatel'stvo Edition"</br>
-		Мы рады, что вы с нами.</br>
-		Если возникли проблемы - пишите в организацию по защите прав детей, ибо
-		email у нас нет, и мы не знаем, что это такое, а телефон отключен за неуплату.</h2></br>
-	</div>
 		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
-		<c:import url="linkbar.jsp" charEncoding="UTF-8"></c:import>
+			<div id="text">
+			</br>
+			Проект написан на языке Java с использованием фреймворков Hibernate и Spring MVC.</br> Также использовался JavaScript, AJAX. 
+			Выбор базы данных пал на H2, т.к. эта база достаточно простая,</br>легка в настройке и пользовании. 
+			</div>
+		
 	</div>
 </body>
 </html>

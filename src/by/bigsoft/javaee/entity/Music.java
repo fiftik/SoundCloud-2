@@ -25,31 +25,18 @@ public class Music extends AbstractEntity{
 	
 	@Column(name = "genre")
 	private String genre;
-	
-	@Column(name = "path")
-	private String path;
-	
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "music")
 	private List<Playlist> playlist;
 	
 	
 
-	public Music(String author, String name_song, byte[] song, String genre, String path,
-			List<Playlist> playlist) {
+	public Music(String author, String name_song, byte[] song, String genre, List<Playlist> playlist) {
 		super();
 		this.author = author;
 		this.name_song = name_song;
 		this.song = song;
 		this.genre = genre;
-		this.path = path;
 		this.playlist = playlist;
 	}
 

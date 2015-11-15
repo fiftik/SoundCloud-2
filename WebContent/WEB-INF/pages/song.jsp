@@ -9,16 +9,19 @@
 	<script src="<c:url value="/resources/js/jquery-1.11.3.min.js"/>"></script>
 	<spring:url value="/song/comm" var="addcommurl" />
 	<div id="body">
-
+	<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
 	<div id="text">
 		
 				<br/>
 				<a href='<c:url value="/song?id=${music.id}"/>'>${music.author} - ${music.name_song}</a>&nbsp &nbsp Жанр: ${music.genre}
 				<br/>
-				<embed src='<c:url value="/music?id=${music.id}"/>' type="video/avi"
+				<!-- <embed src='<c:url value="/music?id=${music.id}"/>' type="video/avi"
 					width="280" height="40" autostart="false" loop="false"
 					align="middle" volume="100">
-				</embed>
+				</embed>-->
+				<audio controls>
+    				<source src='<c:url value="/music?id=${music.id}"/>' type="audio/mpeg"></source>
+				</audio>
 				<form action='<c:url value="/addmusic?id=${music.id}"/>' method="post" id="${music.id}" class="addmsc">
 					<input type="submit" value="Добавить в свой Playlist" />
 				</form>
@@ -44,8 +47,6 @@
 			</c:forEach>
 			</div>
 		</div>
-		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
-		<c:import url="linkbar.jsp" charEncoding="UTF-8"></c:import>
 	</div>
 	<script>
 	$(function(){
