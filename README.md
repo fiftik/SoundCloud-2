@@ -1,2 +1,3 @@
 # SoundCloud-2
-My web-service working in IE7 and lower version.
+It's just a small and simple analogue of Soundcloud. 
+Only for self-education.
